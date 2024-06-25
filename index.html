@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestión de Clientes</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Gestión de Clientes</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#altaCliente">Alta de Cliente</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#bajaCliente">Baja de Cliente</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#modificarCliente"
+              >Modificar Datos del Cliente</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Página Principal con Panel de Tarjetas -->
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Alta de Cliente</h5>
+              <p class="card-text">Registra nuevos clientes en el sistema.</p>
+              <a href="#altaCliente" class="btn btn-primary"
+                >Ir a Alta de Cliente</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Baja de Cliente</h5>
+              <p class="card-text">Elimina clientes del sistema.</p>
+              <a href="#bajaCliente" class="btn btn-primary"
+                >Ir a Baja de Cliente</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Modificar Datos del Cliente</h5>
+              <p class="card-text">
+                Actualiza la información de los clientes existentes.
+              </p>
+              <a href="#modificarCliente" class="btn btn-primary"
+                >Ir a Modificar Datos del Cliente</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección Alta de Cliente -->
+    <div class="container mt-4" id="altaCliente">
+      <h2>Alta de Cliente</h2>
+      <form id="altaClienteForm" onsubmit="return validarAltaCliente()">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nombre"
+            placeholder="Ingrese nombre"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Ingrese email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="telefono"
+            placeholder="Ingrese teléfono"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-success">Agregar Cliente</button>
+      </form>
+    </div>
+
+    <!-- Sección Baja de Cliente -->
+    <div class="container mt-4" id="bajaCliente">
+      <h2>Baja de Cliente</h2>
+      <form id="bajaClienteForm" onsubmit="return validarBajaCliente()">
+        <div class="form-group">
+          <label for="idCliente">ID de Cliente</label>
+          <input
+            type="text"
+            class="form-control"
+            id="idCliente"
+            placeholder="Ingrese ID del cliente"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-danger">Eliminar Cliente</button>
+      </form>
+    </div>
+
+    <!-- Sección Modificar Datos del Cliente -->
+    <div class="container mt-4" id="modificarCliente">
+      <h2>Modificar Datos del Cliente</h2>
+      <form
+        id="modificarClienteForm"
+        onsubmit="return validarModificarCliente()"
+      >
+        <div class="form-group">
+          <label for="idClienteModificar">ID de Cliente</label>
+          <input
+            type="text"
+            class="form-control"
+            id="idClienteModificar"
+            placeholder="Ingrese ID del cliente"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="nuevoNombre">Nuevo Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nuevoNombre"
+            placeholder="Ingrese nuevo nombre"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="nuevoEmail">Nuevo Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="nuevoEmail"
+            placeholder="Ingrese nuevo email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="nuevoTelefono">Nuevo Teléfono</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="nuevoTelefono"
+            placeholder="Ingrese nuevo teléfono"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Modificar Cliente</button>
+      </form>
+    </div>
+
+    <script src="./script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
